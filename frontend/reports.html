@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Compliance Scanner</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #F5F7FA; }
+        .sidebar { width: 260px; height: 100vh; background: #1E3A5F; position: fixed; }
+        .sidebar-logo { padding: 24px; color: white; font-size: 20px; font-weight: 700; }
+        .nav-item { display: block; padding: 14px 24px; color: rgba(255,255,255,0.7); text-decoration: none; }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+        .main { margin-left: 260px; padding: 32px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+        .header h1 { color: #1E3A5F; font-size: 28px; }
+        .btn { padding: 12px 24px; background: #1E3A5F; color: white; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; }
+        .reports-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .report-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .report-preview { height: 200px; background: #F9FAFB; display: flex; align-items: center; justify-content: center; color: #6B7280; }
+        .report-info { padding: 20px; }
+        .report-title { color: #1E3A5F; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .report-meta { font-size: 14px; color: #6B7280; margin-bottom: 12px; }
+        .report-actions { display: flex; gap: 12px; }
+        .report-btn { flex: 1; padding: 8px; text-align: center; background: #F3F4F6; border-radius: 6px; font-size: 14px; color: #374151; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">Compliance Scanner</div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="customers.html" class="nav-item">Customers</a>
+            <a href="scans.html" class="nav-item">Scans</a>
+            <a href="findings.html" class="nav-item">Findings</a>
+            <a href="reports.html" class="nav-item active">Reports</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="header">
+            <h1>Reports</h1>
+            <button class="btn">+ Generate Report</button>
+        </div>
+        <div class="reports-grid">
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">Acme Corp - Q1 2026</div>
+                    <div class="report-meta">Generated: 2026-04-01 | Score: 92%</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">Beta Inc - April 2026</div>
+                    <div class="report-meta">Generated: 2026-04-18 | Score: 78%</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">GlobalTech - Q1 2026</div>
+                    <div class="report-meta">Generated: 2026-04-10 | Score: 95%</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">Acme Corp - Drift Report</div>
+                    <div class="report-meta">Generated: 2026-04-15 | Changes: +5</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">Executive Summary - Q1</div>
+                    <div class="report-meta">Generated: 2026-04-01 | All Customers</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="report-card">
+                <div class="report-preview">📄 PDF</div>
+                <div class="report-info">
+                    <div class="report-title">Security Audit - Acme</div>
+                    <div class="report-meta">Generated: 2026-04-12 | Score: 89%</div>
+                    <div class="report-actions">
+                        <a href="#" class="report-btn">Download</a>
+                        <a href="#" class="report-btn">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

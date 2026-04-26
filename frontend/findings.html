@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Findings - Compliance Scanner</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #F5F7FA; }
+        .sidebar { width: 260px; height: 100vh; background: #1E3A5F; position: fixed; }
+        .sidebar-logo { padding: 24px; color: white; font-size: 20px; font-weight: 700; }
+        .nav-item { display: block; padding: 14px 24px; color: rgba(255,255,255,0.7); text-decoration: none; }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+        .main { margin-left: 260px; padding: 32px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .header h1 { color: #1E3A5F; font-size: 28px; }
+        .filters { display: flex; gap: 12px; margin-bottom: 24px; }
+        .filter-btn { padding: 8px 16px; background: white; border: 1px solid #E5E7EB; border-radius: 8px; color: #6B7280; cursor: pointer; }
+        .filter-btn.active { background: #1E3A5F; color: white; border-color: #1E3A5F; }
+        .findings-grid { display: grid; gap: 16px; }
+        .finding-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; gap: 16px; }
+        .severity-indicator { width: 4px; border-radius: 2px; }
+        .severity-indicator.critical { background: #DC2626; }
+        .severity-indicator.high { background: #F59E0B; }
+        .severity-indicator.medium { background: #3B82F6; }
+        .severity-indicator.low { background: #10B981; }
+        .finding-content { flex: 1; }
+        .finding-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .finding-control { color: #6B7280; font-size: 14px; }
+        .finding-title { color: #1E3A5F; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .finding-description { color: #6B7280; font-size: 14px; margin-bottom: 16px; }
+        .finding-meta { display: flex; gap: 24px; font-size: 14px; color: #6B7280; }
+        .severity-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .severity-badge.critical { background: #FEE2E2; color: #991B1B; }
+        .severity-badge.high { background: #FEF3C7; color: #92400E; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">Compliance Scanner</div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="customers.html" class="nav-item">Customers</a>
+            <a href="scans.html" class="nav-item">Scans</a>
+            <a href="findings.html" class="nav-item active">Findings</a>
+            <a href="reports.html" class="nav-item">Reports</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="header">
+            <h1>Findings (127)</h1>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Critical (3)</button>
+            <button class="filter-btn">High (12)</button>
+            <button class="filter-btn">Medium (45)</button>
+            <button class="filter-btn">Low (67)</button>
+        </div>
+        <div class="findings-grid">
+            <div class="finding-card">
+                <div class="severity-indicator critical"></div>
+                <div class="finding-content">
+                    <div class="finding-header">
+                        <span class="finding-control">CIS 1.1.1</span>
+                        <span class="severity-badge critical">Critical</span>
+                    </div>
+                    <div class="finding-title">Ensure mounting of cramfs filesystems is disabled</div>
+                    <div class="finding-description">The cramfs filesystem is still available on the system. This could be used to escalate privileges.</div>
+                    <div class="finding-meta">
+                        <span>Asset: server-01</span>
+                        <span>Customer: Acme Corp</span>
+                        <span>Scan: 2026-04-15</span>
+                    </div>
+                </div>
+            </div>
+            <div class="finding-card">
+                <div class="severity-indicator high"></div>
+                <div class="finding-content">
+                    <div class="finding-header">
+                        <span class="finding-control">CIS 2.1</span>
+                        <span class="severity-badge high">High</span>
+                    </div>
+                    <div class="finding-title">Ensure CloudTrail is enabled</div>
+                    <div class="finding-description">CloudTrail is not enabled for this AWS account.</div>
+                    <div class="finding-meta">
+                        <span>Asset: aws-account-123456</span>
+                        <span>Customer: Beta Inc</span>
+                        <span>Scan: 2026-04-18</span>
+                    </div>
+                </div>
+            </div>
+            <div class="finding-card">
+                <div class="severity-indicator medium"></div>
+                <div class="finding-content">
+                    <div class="finding-header">
+                        <span class="finding-control">CIS 4.2</span>
+                        <span class="severity-badge" style="background:#DBEAFE;color:#1E40AF">Medium</span>
+                    </div>
+                    <div class="finding-title">Ensure S3 bucket policy is configured to deny unencrypted uploads</div>
+                    <div class="finding-description">Bucket does not have encryption policy enforced.</div>
+                    <div class="finding-meta">
+                        <span>Asset: s3://data-bucket</span>
+                        <span>Customer: Acme Corp</span>
+                        <span>Scan: 2026-04-15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
