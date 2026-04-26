@@ -1,0 +1,30 @@
+services:
+  # 1. FastAPI Backend (Running in Docker to include security binaries)
+  - type: web
+    name: compliance-api
+    runtime: docker
+    plan: free
+    region: ohio
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set this in Render dashboard (Neon URL)
+      - key: JWT_SECRET
+        generateValue: true
+      - key: START_FRONTEND
+        value: "false"
+      - key: PORT
+        value: "8000"
+
+  # 2. Next.js Frontend
+  - type: web
+    name: compliance-dashboard
+    runtime: node
+    plan: free
+    buildCommand: cd frontend-next && npm install && npm run build
+    staticPublishNum: 1
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: compliance-api
+          property: host
