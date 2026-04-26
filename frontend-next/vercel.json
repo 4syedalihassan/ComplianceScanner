@@ -1,7 +1,18 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "outputDirectory": ".next"
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/auth/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/((?!api|auth).*)",
+      "destination": "/frontend-next/$1"
+    }
+  ],
+  "installCommand": "pip install -r requirements.txt && cd frontend-next && npm install",
+  "buildCommand": "cd frontend-next && npm run build"
 }
