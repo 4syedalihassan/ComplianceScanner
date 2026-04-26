@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     libpq-dev \
     gcc \
+    nmap \
+    && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+    && curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.8.0/kube-bench_0.8.0_linux_amd64.tar.gz | tar -xz -C /usr/local/bin \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
