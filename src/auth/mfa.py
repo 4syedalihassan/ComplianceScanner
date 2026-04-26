@@ -10,7 +10,9 @@ from typing import Optional
 import jwt
 from jwt.exceptions import PyJWTError
 
-SECRET_KEY = "CHANGE-ME-IN-PRODUCTION"  # TODO: Load from env
+import os
+
+SECRET_KEY = os.getenv("JWT_SECRET", "CHANGE-ME-IN-PRODUCTION")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE = 3600  # 1 hour
 REFRESH_TOKEN_EXPIRE = 604800  # 7 days
