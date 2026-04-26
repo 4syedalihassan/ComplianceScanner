@@ -91,13 +91,19 @@ async def lifespan(app: FastAPI):
     
     # Connect to database
     try:
-        DB_POOL = await asyncpg.create_pool(
-            host=os.getenv("DB_HOST", "localhost"),
-            port=int(os.getenv("DB_PORT", "5432")),
-            user=os.getenv("DB_USER", "postgres"),
-            password=os.getenv("DB_PASSWORD", "postgres"),
-            database=os.getenv("DB_NAME", "compliance")
-        )
+        database_url = os.getenv("DATABASE_URL")
+        if database_url:
+            # Use unified connection string (Neon/Vercel standard)
+            DB_POOL = await asyncpg.create_pool(dsn=database_url)
+        else:
+            # Fallback to separate parameters
+            DB_POOL = await asyncpg.create_pool(
+                host=os.getenv("DB_HOST", "localhost"),
+                port=int(os.getenv("DB_PORT", "5432")),
+                user=os.getenv("DB_USER", "postgres"),
+                password=os.getenv("DB_PASSWORD", "postgres"),
+                database=os.getenv("DB_NAME", "compliance")
+            )
     except Exception as e:
         print(f"Warning: Could not connect to database: {e}")
         print("Running in demo mode without database")
