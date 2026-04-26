@@ -29,9 +29,9 @@ python-nmap>=0.7.0
 pywinrm>=0.4.0
 pyVmomi>=7.0.0
 
-# Kubernetes/Container
-kube-bench>=0.9.0
-trivy>=0.55.0
+# Kubernetes/Container (Install these manually on the host shell/Dockerfile)
+# kube-bench>=0.9.0
+# trivy>=0.55.0
 
 # Reports
 jinja2>=3.1.0
